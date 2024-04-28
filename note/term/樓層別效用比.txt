@@ -1,0 +1,25 @@
+"""
+psuedo code for 樓層別效用比
+"""
+"""
+parameter:
+price: a array of signed integer that indicates price of each floor.
+""" 
+
+function getRatio(price : array[signed int],sale)
+{
+	let new_price := price; # now, new_price is an array  with same length of price.
+	let ratio := price;
+	let base;	
+
+	const length  :=  len(price); # get length (number of element) of price.
+	for i from 0 to length-1 step 1:
+		new_price[i] := price[i] / sale;
+	end
+	base :=  max(new_price); # find the maximum of new_price.
+	for i from 0 to length-1 step 1:
+		ratio[i] := new_price[i] / base;
+	end
+	
+	return ratio; # 樓層別效用比 (0<= x <= 1, 0 代表效用最小,1 代表效用最大)
+}
